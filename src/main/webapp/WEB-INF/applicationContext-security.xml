@@ -7,47 +7,47 @@
 
     <!--<global-method-security pre-post-annotations="enabled"/>-->
 
-    <security:http auto-config="false" entry-point-ref="authenticationEntryPoint"> 
-        <security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/index*" access="IS_AUTHENTICATED_ANONYMOUSLY" /> 
-        <security:intercept-url pattern="/pages/admin.jsp" access="ROLE_ADMIN" />  
-        <security:logout logout-success-url="/login.jsp"  invalidate-session="true"/>  
-        <security:intercept-url pattern="/pages/main.jsp" access="ROLE_USER,ROLE_ADMIN" />  
-        <security:logout logout-success-url="/login.jsp" invalidate-session="true"/>        
-        <security:custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" /> 
+    <http auto-config="false" entry-point-ref="authenticationEntryPoint"> 
+        <intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/index*" access="IS_AUTHENTICATED_ANONYMOUSLY" /> 
+        <intercept-url pattern="/pages/admin.jsp" access="ROLE_ADMIN" />  
+        <logout logout-success-url="/login.jsp"  invalidate-session="true"/>  
+        <intercept-url pattern="/pages/main.jsp" access="ROLE_USER,ROLE_ADMIN" />  
+        <logout logout-success-url="/login.jsp" invalidate-session="true"/>        
+        <custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" /> 
         <!-- Habilita remember me -->
-        <security:remember-me data-source-ref="dataSource"/>
+        <remember-me data-source-ref="dataSource"/>
         
-    </security:http>
+    </http>
     
-    <bean id="authenticationFilter" class="br.org.abmnet.security.AutenticarFilter">
-        <property name="authenticationManager" ref="authenticationManager" />
-    </bean>
+    <beans:bean id="authenticationFilter" class="br.org.abmnet.security.AutenticarFilter">
+        <beans:property name="authenticationManager" ref="authenticationManager" />
+    </beans:bean>
     
-    <bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-        <property name="loginFormUrl" value="/login.jsp" />
-    </bean>
+    <beans:bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <beans:property name="loginFormUrl" value="/login.jsp" />
+    </beans:bean>
     <!-- Permiti security/tags em JSP-->
-    <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+    <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
     
     <!-- Define a forma de acesso ao dados de usuário, senha e sua respectiva role-->
-    <security:authentication-manager alias="authenticationManager">
-        <security:authentication-provider>
-            <security:password-encoder hash="md5" />
-            <security:jdbc-user-service data-source-ref="dataSource"
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider>
+            <password-encoder hash="md5" />
+            <jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query="SELECT usuario, senha, 'true' as ativo FROM usuarios WHERE usuario=?"
                                authorities-by-username-query="SELECT usuario, autoridade FROM autoridades WHERE usuario=?"
             />
-        </security:authentication-provider>
-    </security:authentication-manager>
+        </authentication-provider>
+    </authentication-manager>
     
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-        <property name="url" value="jdbc:mysql://localhost:3306/demo" />
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="username" value="root" />
-        <property name="password" value="16marioe" />
-    </bean>
+    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/demo" />
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="username" value="root" />
+        <beans:property name="password" value="16marioe" />
+    </beans:bean>
     
     <!--
     Usernames/Passwords are
