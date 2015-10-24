@@ -42,10 +42,10 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
         <error-code>404</error-code> 
         <location>/pages/404.jsp</location> 
     </error-page> 
-    <error-page> 
+    <!--<error-page> 
         <error-code>403</error-code> 
         <location>/pages/403.jsp</location> 
-    </error-page>
+    </error-page>-->
     
     <!-- Tempo para expirar a Sessão -->
     <session-config>
