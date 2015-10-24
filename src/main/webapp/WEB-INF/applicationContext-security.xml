@@ -6,8 +6,8 @@
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <!--<global-method-security pre-post-annotations="enabled"/>-->
-
-    <http auto-config="false" entry-point-ref="authenticationEntryPoint" access-denied-page="/pages/403.jsp"> 
+    <!--<http auto-config="false" entry-point-ref="authenticationEntryPoint" access-denied-page="/pages/403.jsp">--> 
+    <http auto-config="true" access-denied-page="/pages/403.jsp"> 
         <intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/index*" access="IS_AUTHENTICATED_ANONYMOUSLY" /> 
@@ -15,60 +15,64 @@
         <logout logout-success-url="/login.jsp"  invalidate-session="true"/>  
         <intercept-url pattern="/pages/main.jsp" access="ROLE_USER,ROLE_ADMIN" />  
         <logout logout-success-url="/login.jsp" invalidate-session="true"/>        
-        <custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" /> 
+        <!--<custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" />-->
+        <form-login login-page="/login.jsp" authentication-success-handler-ref="authSuccessHandler" />
         <!-- Habilita remember me -->
         <remember-me data-source-ref="dataSource"/>
                 
     </http>
+  
+    <beans:bean id="authSuccessHandler" class="br.org.abmnet.security.AuthSuccessHandler"/>
     
-    <beans:bean id="authenticationFilter" class="br.org.abmnet.security.AutenticarFilter">
+    <!--<beans:bean id="authenticationFilter" class="br.org.abmnet.security.AutenticarFilter">
         <beans:property name="authenticationManager" ref="authenticationManager" />
-    </beans:bean>
+    </beans:bean>-->
     
-    <beans:bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+    <!--<beans:bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
         <beans:property name="loginFormUrl" value="/login.jsp"/>
-    </beans:bean>
-    <!-- Permiti security/tags em JSP-->
-    <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+    </beans:bean>-->
+
+<!-- Permiti security/tags em JSP-->
+<beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
     
-    <!-- Define a forma de acesso ao dados de usuário, senha e sua respectiva role-->
-    <authentication-manager alias="authenticationManager">
-        <authentication-provider>
-            <password-encoder hash="md5" />
-            <jdbc-user-service data-source-ref="dataSource"
-                               users-by-username-query="SELECT usuario, senha, 'true' as ativo FROM usuarios WHERE usuario=?"
-                               authorities-by-username-query="SELECT usuario, autoridade FROM autoridades WHERE usuario=?"
-            />
-        </authentication-provider>
-    </authentication-manager>
+<!-- Define a forma de acesso ao dados de usuário, senha e sua respectiva role-->
+<authentication-manager alias="authenticationManager">
+    <authentication-provider>
+        <password-encoder hash="md5" />
+        <jdbc-user-service data-source-ref="dataSource"
+                           users-by-username-query="SELECT usuario, senha, 'true' as ativo FROM usuarios WHERE usuario=?"
+                           authorities-by-username-query="SELECT usuario, autoridade FROM autoridades WHERE usuario=?"
+        />
+    </authentication-provider>
+</authentication-manager>
     
-    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-        <beans:property name="url" value="jdbc:mysql://localhost:3306/demo" />
-        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <beans:property name="username" value="root" />
-        <beans:property name="password" value="16marioe" />
-    </beans:bean>
+<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+    <beans:property name="url" value="jdbc:mysql://localhost:3306/demo" />
+    <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+    <beans:property name="username" value="root" />
+    <beans:property name="password" value="16marioe" />
+</beans:bean>
     
-    <!--
-    Usernames/Passwords are
-        moez/moez
-        test/test
-        scott/wombat
-        peter/opal        
-    -->
-    <!--
-    <authentication-manager alias="authenticationManager" >
-        <authentication-provider>
-            <password-encoder hash="md5"/>
-            <user-service>
-                <user name="moez" password="f69471ca2c42621b8b8e731b2b4446e4" authorities="ROLE_SUPERVISOR, ROLE_USER, ROLE_TELLER" />
-                <user name="test" password="098f6bcd4621d373cade4e832627b4f6" authorities="ROLE_USER" />
-                <user name="scott" password="2b58af6dddbd072ed27ffc86725d7d3a" authorities="ROLE_ADMIN" />
-                <user name="peter" password="22b5c9accc6e1ba628cedc63a72d57f8" authorities="ROLE_ADMIN" />                
-            </user-service>
-        </authentication-provider>
-    </authentication-manager>
-    -->
+<!--
+Usernames/Passwords are
+    moez/moez
+    test/test
+    scott/wombat
+    peter/opal        
+-->
+<!--
+<authentication-manager alias="authenticationManager" >
+    <authentication-provider>
+        <password-encoder hash="md5"/>
+        <user-service>
+            <user name="moez" password="f69471ca2c42621b8b8e731b2b4446e4" authorities="ROLE_SUPERVISOR, ROLE_USER, ROLE_TELLER" />
+            <user name="test" password="098f6bcd4621d373cade4e832627b4f6" authorities="ROLE_USER" />
+            <user name="scott" password="2b58af6dddbd072ed27ffc86725d7d3a" authorities="ROLE_ADMIN" />
+            <user name="peter" password="22b5c9accc6e1ba628cedc63a72d57f8" authorities="ROLE_ADMIN" />                
+        </user-service>
+    </authentication-provider>
+</authentication-manager>
+-->
     
 </beans:beans>
 

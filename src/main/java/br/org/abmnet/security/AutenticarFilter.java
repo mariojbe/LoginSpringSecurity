@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
 
+    @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, Authentication authResult) throws IOException, ServletException {
         SavedRequestAwareAuthenticationSuccessHandler srh = new SavedRequestAwareAuthenticationSuccessHandler();
         this.setAuthenticationSuccessHandler(srh);
