@@ -32,6 +32,7 @@ public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
         super.successfulAuthentication(request, response, authResult);
         HttpServletResponseWrapper responseWrapper = new HttpServletResponseWrapper(response);
         Writer out = responseWrapper.getWriter();
+        //out.write("{success:true, targetUrl : \'" + targetUrl + "\'}");
         out.write("{success:true}");
         out.close();
     }

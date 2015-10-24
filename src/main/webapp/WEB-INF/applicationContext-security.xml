@@ -18,7 +18,7 @@
         <custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" /> 
         <!-- Habilita remember me -->
         <remember-me data-source-ref="dataSource"/>
-        
+                
     </http>
     
     <beans:bean id="authenticationFilter" class="br.org.abmnet.security.AutenticarFilter">
@@ -26,7 +26,7 @@
     </beans:bean>
     
     <beans:bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-        <beans:property name="loginFormUrl" value="/login.jsp" />
+        <beans:property name="loginFormUrl" value="/login.jsp"/>
     </beans:bean>
     <!-- Permiti security/tags em JSP-->
     <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
