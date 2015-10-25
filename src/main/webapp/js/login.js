@@ -31,7 +31,7 @@ Ext.onReady(function () {
                 boxLabel: 'Lembrar-Me?',
                 name: '_spring_security_remember_me',
                 checked: false,
-                inputType:'checkbox'
+                inputType: 'checkbox'
             }
         ],
         buttons: [{
@@ -48,15 +48,11 @@ Ext.onReady(function () {
                 border: true,
                 handler: function () {
                     login.getForm().submit({
+                        //url: 'j_spring_security_check',
+                        waitMsg: 'Autenticando...',
                         method: 'POST',
-                        success: function () {
-                            Ext.Msg.alert('Status', 'A autenticação bem sucedida!', function (btn, text) {
-
-                                if (btn == 'ok') {
-                                    window.location = 'pages/main.jsp';
-                                }
-                            });
-
+                        success: function (form, action) {
+                            console.log(action.response.responseText);
                         },
                         failure: function (form, action) {
                             Ext.Msg.show({
@@ -66,13 +62,11 @@ Ext.onReady(function () {
                                 buttons: Ext.Msg.OK
                             });
                             login.getForm().reset();
-                        },
+                        }
                     });
                 }
             }
         ]
     });
-
     login.render('login');
-
 });
