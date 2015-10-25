@@ -20,9 +20,9 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
 
         String targetUrl = "";
         if (role.contains("ROLE_USER")) {
-            targetUrl = "/client/index";
+            targetUrl = "/pages/main.jsp";
         } else if (role.contains("ROLE_ADMIN")) {
-            targetUrl = "/agency/index";
+            targetUrl = "/pages/admin.jsp";
         }
         return targetUrl;
     }
