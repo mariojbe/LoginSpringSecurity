@@ -51,8 +51,17 @@ Ext.onReady(function () {
                         //url: 'j_spring_security_check',
                         waitMsg: 'Autenticando...',
                         method: 'POST',
-                        success: function (form, action) {
-                            console.log(action.response.responseText);
+                        success: function (form, action, url) {
+                            window.location.href = '/LoginSpringSecurity/pages/admin.jsp';
+                            //console.log(action.response.responseText);
+                            //window.location.href = 'url';
+                            /*
+                             Ext.Msg.alert('Status', 'Login Successful!', function (btn, text) {
+                             if (btn == 'ok') {
+                             window.location = '/LoginSpringSecurity/pages/main.jsp';
+                             }
+                             });
+                             */
                         },
                         failure: function (form, action) {
                             Ext.Msg.show({

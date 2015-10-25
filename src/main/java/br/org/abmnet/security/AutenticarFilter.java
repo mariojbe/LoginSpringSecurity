@@ -27,10 +27,11 @@ public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
 
         String targetUrl = "";
         if (role.contains("ROLE_USER")) {
-            targetUrl = "../pages/main.jsp";
+            targetUrl = "/LoginSpringSecurity/pages/main.jsp";
+            
 
         } else if (role.contains("ROLE_ADMIN")) {
-            targetUrl = "../pages/admin.jsp";
+            targetUrl = "/LoginSpringSecurity/pages/admin.jsp";
         }
         return targetUrl;
     }
@@ -42,20 +43,16 @@ public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
         srh.setRedirectStrategy(new RedirectStrategy() {
             @Override
             public void sendRedirect(HttpServletRequest request,
-                    HttpServletResponse httpServletResponse, String s) throws IOException {
-                
-                String url = determineTargetUrl(request);
-                httpServletResponse.sendRedirect(url);
-                
+                    HttpServletResponse response, String s) throws IOException {
             }
         });
         //super.successfulAuthentication(request, response, null, authResult);
         super.successfulAuthentication(request, response, authResult);
         HttpServletResponseWrapper responseWrapper = new HttpServletResponseWrapper(response);
         Writer out = responseWrapper.getWriter();
-        //String url = determineTargetUrl(request);
-        //out.write("{success:true, targetUrl : \'" + url + "\'}");
-        out.write("{success:true}");
+        String url = determineTargetUrl(request);
+        out.write("{success:true, targetUrl:\'"+url+"\'}");
+        //out.write("{success:true}");
         out.close();
     }
 
