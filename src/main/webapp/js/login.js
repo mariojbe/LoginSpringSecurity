@@ -2,7 +2,7 @@ Ext.onReady(function () {
     Ext.QuickTips.init();
     var login = new Ext.FormPanel({
         labelWidth: 80,
-        //url: 'j_spring_security_check',
+        url: 'j_spring_security_check',
         frame: true,
         title: 'Login',
         defaultType: 'textfield',
@@ -48,7 +48,7 @@ Ext.onReady(function () {
                 border: true,
                 handler: function () {
                     login.getForm().submit({
-                        url: 'j_spring_security_check',
+                        //url: 'j_spring_security_check',
                         waitMsg: 'Autenticando...',
                         method: 'POST',
                         success: function (form, action) {
