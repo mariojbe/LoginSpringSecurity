@@ -49,12 +49,16 @@ Ext.onReady(function () {
                 handler: function () {
                     login.getForm().submit({
                         //url: 'j_spring_security_check',
-                        waitMsg: 'Autenticando...',
                         method: 'POST',
-                        success: function (form, action, url) {
-                            window.location.href = '/LoginSpringSecurity/pages/admin.jsp';
+                        //waitMsg: 'Autenticando...',
+                        success: function (form, action) {
+                            Ext.MessageBox.wait("Autenticando...", 'Aguarde!!!');
+
+                            Ext.Msg.alert(action.response.responseText);
+                            var redirect = action.response.responseText;
+                            window.location.href = "" + redirect + ".jsp";
+                            //window.location.href = (obj.success);
                             //console.log(action.response.responseText);
-                            //window.location.href = 'url';
                             /*
                              Ext.Msg.alert('Status', 'Login Successful!', function (btn, text) {
                              if (btn == 'ok') {
