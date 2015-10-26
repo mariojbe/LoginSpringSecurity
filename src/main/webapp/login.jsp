@@ -23,11 +23,11 @@
         <style type="text/css">
             @import url("ext-3.2.1/resources/css/ext-all.css");
         </style>
-        <script src="ext-3.2.1/adapter/ext/ext-base.js" type="text/javascript"></script>
-        <script src="ext-3.2.1/ext-all.js" type="text/javascript"></script>
-        <script src="ext-3.2.1/locale/ext-lang-pt_BR.js" type="text/javascript"></script>
+        <script src='<c:url value="ext-3.2.1/adapter/ext/ext-base.js"/>'></script>
+        <script src='<c:url value="ext-3.2.1/ext-all.js"/>'></script>
+        <script src='<c:url value="ext-3.2.1/locale/ext-lang-pt_BR.js"/>'></script>
         <!-- login form -->
-        <script src="js/login.js" type="text/javascript"></script>
+        <script src='<c:url value="js/login.js"/>'></script>
         
     </head>
 

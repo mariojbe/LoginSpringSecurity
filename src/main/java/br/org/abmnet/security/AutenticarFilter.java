@@ -21,15 +21,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
 
     private String determineTargetUrl(HttpServletRequest request) {
-        // Get the role of logged in user
+        // Obtendo a Autoridade do usuário conectado
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String role = auth.getAuthorities().toString();
 
         String targetUrl = "";
+        
         if (role.contains("ROLE_USER")) {
             targetUrl = "/LoginSpringSecurity/pages/main.jsp";
-            
-
         } else if (role.contains("ROLE_ADMIN")) {
             targetUrl = "/LoginSpringSecurity/pages/admin.jsp";
         }
