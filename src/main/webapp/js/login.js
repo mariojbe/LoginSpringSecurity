@@ -52,20 +52,9 @@ Ext.onReady(function () {
                         method: 'POST',
                         //waitMsg: 'Autenticando...',
                         success: function (form, action) {
-                            Ext.MessageBox.wait("Autenticando...", 'Aguarde!!!');
-
-                            Ext.Msg.alert(action.response.responseText);
-                            var redirect = action.response.responseText;
-                            window.location.href = "" + redirect + ".jsp";
-                            //window.location.href = (obj.success);
-                            //console.log(action.response.responseText);
-                            /*
-                             Ext.Msg.alert('Status', 'Login Successful!', function (btn, text) {
-                             if (btn == 'ok') {
-                             window.location = '/LoginSpringSecurity/pages/main.jsp';
-                             }
-                             });
-                             */
+                            Ext.MessageBox.wait("Autenticando...", 'Aguarde!!!');                           
+                            var redirecionar = action.result.location;
+                            window.location.href = (redirecionar);
                         },
                         failure: function (form, action) {
                             Ext.Msg.show({

@@ -14,22 +14,21 @@
 <sec:authorize access="isFullyAuthenticated()">
     <c:redirect url="/pages/main.jsp"/>
 </sec:authorize>
-<%--
-<sec:authorize access="!isRememberMe()">
-    <c:redirect url="/login.jsp"/>
-</sec:authorize>
 
-<sec:authorize access="!isFullyAuthenticated()">
-    <c:redirect url="/login.jsp"/>
-</sec:authorize>--%>
 <html>
     <head>
         <title>Login</title>
 
         <!-- Ext JS files -->
+        <style type="text/css">
+            @import url("ext-3.2.1/resources/css/ext-all.css");
+        </style>
+        <script src="ext-3.2.1/adapter/ext/ext-base.js" type="text/javascript"></script>
+        <script src="ext-3.2.1/ext-all.js" type="text/javascript"></script>
+        <script src="ext-3.2.1/locale/ext-lang-pt_BR.js" type="text/javascript"></script>
         <!-- login form -->
         <script src="js/login.js" type="text/javascript"></script>
-
+        
     </head>
 
     <body>
