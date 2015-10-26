@@ -7,24 +7,20 @@
 
     <!--<global-method-security pre-post-annotations="enabled"/>-->
     
-    <!--<http auto-config="true" access-denied-page="/pages/403.jsp">-->
     <http auto-config="false" entry-point-ref="authenticationEntryPoint" access-denied-page="/pages/403.jsp">          
         <intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/index*" access="IS_AUTHENTICATED_ANONYMOUSLY" /> 
         <intercept-url pattern="/pages/admin.jsp" access="ROLE_ADMIN" />  
-        <logout logout-success-url="/login.jsp"  invalidate-session="true"/>  
+        <logout logout-success-url="/login.jsp"  invalidate-session="true" delete-cookies="JSESSIONID"/>  
         <intercept-url pattern="/pages/main.jsp" access="ROLE_USER,ROLE_ADMIN" />  
-        <logout logout-success-url="/login.jsp" invalidate-session="true"/>        
+        <logout logout-success-url="/login.jsp" invalidate-session="true" delete-cookies="JSESSIONID"/>        
         <custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter"/>
-        <!--<form-login login-page="/login.jsp" authentication-success-handler-ref="authSuccessHandler" />-->
         <!-- Habilita remember me -->
         <!--<remember-me data-source-ref="dataSource"/>-->
                 
     </http>
-  
-    <!--<beans:bean id="authSuccessHandler" class="br.org.abmnet.security.AuthSuccessHandler"/>-->
-    
+     
     <beans:bean id="authenticationFilter" class="br.org.abmnet.security.AutenticarFilter">
         <beans:property name="authenticationManager" ref="authenticationManager" />
     </beans:bean>
