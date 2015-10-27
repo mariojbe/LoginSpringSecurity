@@ -1,10 +1,4 @@
 #use demo
-create table conta(
-	id int primary key auto_increment,
-	usuario varchar(50) not null,
-	senha varchar(30) not null,
-	nome varchar(50) not null
-) 
 
 CREATE TABLE usuarios
 (

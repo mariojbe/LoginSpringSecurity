@@ -3,6 +3,8 @@ package br.org.abmnet.security;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,11 +28,13 @@ public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
         String role = auth.getAuthorities().toString();
 
         String targetUrl = "";
-        
+
+        String path = request.getContextPath();
+
         if (role.contains("ROLE_USER")) {
-            targetUrl = "/LoginSpringSecurity/pages/main.jsp";
+            targetUrl = path + "/pages/main.jsp";
         } else if (role.contains("ROLE_ADMIN")) {
-            targetUrl = "/LoginSpringSecurity/pages/admin.jsp";
+            targetUrl = path + "/pages/admin.jsp";
         }
         return targetUrl;
     }
@@ -50,9 +54,10 @@ public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
         HttpServletResponseWrapper responseWrapper = new HttpServletResponseWrapper(response);
         Writer out = responseWrapper.getWriter();
         String url = determineTargetUrl(request);
-        out.write("{success:true, location:\'"+url+"\'}");
+        out.write("{success:true, location:\'" + url + "\'}");
         //out.write("{success:true}");
         out.close();
+
     }
 
     @Override
