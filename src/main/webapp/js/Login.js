@@ -52,7 +52,7 @@ Ext.onReady(function () {
                         method: 'POST',
                         //waitMsg: 'Autenticando...',
                         success: function (form, action) {
-                            Ext.MessageBox.wait("Autenticando...", 'Aguarde!!!');                           
+                            Ext.MessageBox.wait("Autenticando...", 'Aguarde!!!');
                             var redirecionar = action.result.location;
                             window.location.href = (redirecionar);
                         },
