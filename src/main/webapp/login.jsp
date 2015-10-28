@@ -27,7 +27,7 @@
         <script src='<c:url value="ext-3.2.1/ext-all.js"/>'></script>
         <script src='<c:url value="ext-3.2.1/locale/ext-lang-pt_BR.js"/>'></script>
         <!-- login form -->
-        <script src='<c:url value="js/login.js"/>'></script>
+        <script src='<c:url value="js/Login.js"/>'></script>
         
     </head>
 
