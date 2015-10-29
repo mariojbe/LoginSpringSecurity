@@ -60,6 +60,11 @@
             <artifactId>spring-jdbc</artifactId>
             <version>3.1.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>3.0.7.RELEASE</version>
+        </dependency>
         <!-- Dependencias Spring Security-->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -87,10 +92,10 @@
         </dependency>
         
         <!-- Dependencias Hibernate -->
-         <dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.1.12.Final</version>
+            <version>3.5.6-Final</version>
         </dependency>
 
         <dependency>
@@ -104,7 +109,28 @@
             <artifactId>h2</artifactId>
             <version>1.4.190</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <type>jar</type>
+        </dependency>
+        <!-- Dependencia JSON -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
