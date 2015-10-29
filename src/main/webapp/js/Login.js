@@ -24,7 +24,34 @@ Ext.onReady(function () {
                 fieldLabel: 'Senha',
                 name: 'j_password',
                 inputType: 'password',
-                allowBlank: false
+                allowBlank: false,
+                /* Ao pressionar Enter submite o formulario */
+                listeners: {
+                    scope: this,
+                    'specialkey': function (field, event) {
+                        if (event.getKey() == event.ENTER) {
+                            login.getForm().submit({
+                                //url: 'j_spring_security_check',
+                                method: 'POST',
+                                //waitMsg: 'Autenticando...',
+                                success: function (form, action) {
+                                    Ext.MessageBox.wait("Autenticando...", 'Aguarde!!!');
+                                    var redirecionar = action.result.location;
+                                    window.location.href = (redirecionar);
+                                },
+                                failure: function (form, action) {
+                                    Ext.Msg.show({
+                                        title: 'Error!',
+                                        msg: 'Usuário ou Senha Inválidos',
+                                        icon: Ext.Msg.ERROR,
+                                        buttons: Ext.Msg.OK
+                                    });
+                                    login.getForm().reset();
+                                }
+                            });
+                        }
+                    }
+                }
             },
             {
                 xtype: 'checkbox',
