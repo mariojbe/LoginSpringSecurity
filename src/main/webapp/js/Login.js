@@ -25,7 +25,10 @@ Ext.onReady(function () {
                 name: 'j_password',
                 inputType: 'password',
                 allowBlank: false,
-                /* Ao pressionar Enter submite o formulario */
+                validateOnBlur: true,
+                validateOnChange: false,
+                enableKeyEvents: true,
+                /* Ao pressionar Enter submeter o formulario */
                 listeners: {
                     scope: this,
                     'specialkey': function (field, event) {
