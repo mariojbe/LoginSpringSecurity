@@ -5,6 +5,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/applicationContext-security.xml
+            /WEB-INF/spring/app-config.xml
         </param-value>
     </context-param>
 
