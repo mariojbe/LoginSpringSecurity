@@ -18,6 +18,6 @@
 
 <!-- Referencia ao @Controller -->
     <mvc:annotation-driven />
-    <bean name="/**.htm" class="br.org.abmnet.controller.AutenticarController"/>
+    <!--<bean name="/**.htm" class="br.org.abmnet.controller.AutenticarController"/>-->
 
 </beans>
