@@ -11,11 +11,12 @@
         <intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/index*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/crud*" access="IS_AUTHENTICATED_ANONYMOUSLY" />  
         <intercept-url pattern="/pages/admin.jsp" access="ROLE_ADMIN" />  
         <logout logout-success-url="/login.jsp"  invalidate-session="true" delete-cookies="JSESSIONID"/>  
         <intercept-url pattern="/pages/main.jsp" access="ROLE_USER,ROLE_ADMIN" />  
-        <logout logout-success-url="/login.jsp" invalidate-session="true" delete-cookies="JSESSIONID"/>        
+        <logout logout-success-url="/login.jsp" invalidate-session="true" delete-cookies="JSESSIONID"/>
+        <intercept-url pattern="/pages/crud.jsp" access="ROLE_USER,ROLE_ADMIN" />  
+        <logout logout-success-url="/login.jsp" invalidate-session="true" delete-cookies="JSESSIONID"/>           
         <custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter"/>
         <!-- Habilita remember me -->
         <!--<remember-me data-source-ref="dataSource"/>-->

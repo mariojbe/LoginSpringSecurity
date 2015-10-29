@@ -32,7 +32,7 @@ public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
         String path = request.getContextPath();
 
         if (role.contains("ROLE_USER")) {
-            targetUrl = path + "/pages/main.jsp";
+            targetUrl = path + "/pages/crud.jsp";
         } else if (role.contains("ROLE_ADMIN")) {
             targetUrl = path + "/pages/admin.jsp";
         }
