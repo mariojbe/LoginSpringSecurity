@@ -45,6 +45,17 @@ CREATE TABLE persistent_logins (
 select * from  persistent_logins
 
 
+DROP TABLE IF EXISTS `blog`.`contact`;
+CREATE TABLE  `blog`.`contact` (
+  `CONTACT_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CONTACT_EMAIL` varchar(255) NOT NULL,
+  `CONTACT_NAME` varchar(255) NOT NULL,
+  `CONTACT_PHONE` varchar(255) NOT NULL,
+  PRIMARY KEY (`CONTACT_ID`)
+) 
+ENGINE=InnoDB;
+
+
 
 
 

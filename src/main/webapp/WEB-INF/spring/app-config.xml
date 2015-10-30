@@ -9,7 +9,9 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<!-- Scans the classpath of this application for @Components to deploy as beans -->
-	<context:component-scan base-package="br.org.abmnet" />
+	<context:component-scan base-package="br.org.abmnet.service" />
+        <context:component-scan base-package="br.org.abmnet.controller" />
+        <context:component-scan base-package="br.org.abmnet.dao" />
 	
 	<!-- Configures the @Controller programming model -->
 	<mvc:annotation-driven />
