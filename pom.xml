@@ -63,7 +63,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>3.0.7.RELEASE</version>
+            <version>3.1.4.RELEASE</version>
         </dependency>
         <!-- Dependencias Spring Security-->
         <dependency>
@@ -131,12 +131,12 @@
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
-            <version>1.9.13</version>
+            <version>1.4.3</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.13</version>
+            <version>1.4.3</version>
         </dependency>
         <dependency>
             <groupId>net.sf.json-lib</groupId>
