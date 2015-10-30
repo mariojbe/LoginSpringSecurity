@@ -15,16 +15,23 @@
     <context:component-scan base-package="br.org.abmnet.util" />
     <context:component-scan base-package="br.org.abmnet.model" />
     
-    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <bean id="urlMapping"   class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
-            <value>
-                /pages/contact/view.action**=contactController
-            </value>
+            <props>
+                <!-- Login -->
+                <prop key="/pages/crud.jsp">contactController</prop>
+                <prop key="/pages/contact/view.action**">contactController</prop>
+                <prop key="/pages/contact/update.action**">contactController</prop>
+                <prop key="/pages/contact/delete.action**">contactController</prop>
+            </props>
         </property>
     </bean>
-        
-    <bean name="contactController" class="br.org.abmnet.controller.ContactController" />
-	
+    
+    <bean name="contactController" class="br.org.abmnet.controller.ContactController" >
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
     <!-- Configures the @Controller programming model -->
     <mvc:annotation-driven />
 
