@@ -12,6 +12,8 @@
 	<context:component-scan base-package="br.org.abmnet.service" />
         <context:component-scan base-package="br.org.abmnet.controller" />
         <context:component-scan base-package="br.org.abmnet.dao" />
+        <context:component-scan base-package="br.org.abmnet.util" />
+        <context:component-scan base-package="br.org.abmnet.model" />
 	
 	<!-- Configures the @Controller programming model -->
 	<mvc:annotation-driven />
@@ -19,6 +21,7 @@
 	<!-- misc -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+            <property name="prefix" value="/pages/"/>
 	    <property name="suffix" value=".jsp"/>
 	</bean>
 	
