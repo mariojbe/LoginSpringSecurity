@@ -15,7 +15,7 @@ import br.org.abmnet.service.ContactService;
 
 /**
  *
- * @author user
+ * @author Mário Jorge
  */
 @Controller
 public class ContactController {

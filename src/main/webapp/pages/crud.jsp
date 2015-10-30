@@ -11,14 +11,20 @@
         <title>CRUD ExtJS Grid</title>
 
         <!-- ExtJS css -->
-        <link rel="stylesheet" type="text/css" href="../ext-3.2.1/resources/css/ext-all.css" />
+        <style type="text/css">
+            @import url("../ext-3.2.1/resources/css/ext-all.css");
+            @import url("../ext-3.2.1/examples/ux/css/RowEditor.css");
+            @import url("../ext-3.2.1/examples/shared/examples.css");
+            @import url("../css/crudgrid.css");
+        </style>
+        <!--<link rel="stylesheet" type="text/css" href="../ext-3.2.1/resources/css/ext-all.css" />-->
 
         <!-- Row Editor plugin css -->
-        <link rel="stylesheet" type="text/css" href="../ext-3.2.1/examples/ux/css/RowEditor.css" />
-        <link rel="stylesheet" type="text/css" href="../ext-3.2.1/examples/shared/examples.css" />
+        <!--<link rel="stylesheet" type="text/css" href="../ext-3.2.1/examples/ux/css/RowEditor.css" />-->
+        <!--<link rel="stylesheet" type="text/css" href="../ext-3.2.1/examples/shared/examples.css" />-->
 
         <!-- App custom css -->
-        <link rel="stylesheet" type="text/css" href="../css/crudgrid.css" />
+        <!--<link rel="stylesheet" type="text/css" href="../css/crudgrid.css" />-->
 
         <!-- ExtJS js -->
         <script src="../ext-3.2.1/adapter/ext/ext-base.js"></script>
