@@ -1,10 +1,7 @@
 package br.org.abmnet.security;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Writer;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +15,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 /**
  *
- * @author M·rio Jorge
+ * @author M√°rio Jorge
  */
 public class AutenticarFilter extends UsernamePasswordAuthenticationFilter {
 
     private String determineTargetUrl(HttpServletRequest request) {
-        // Obtendo a Autoridade do usu·rio conectado
+        // Obtendo a Autoridade do usu√°rio conectado
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String role = auth.getAuthorities().toString();
 
