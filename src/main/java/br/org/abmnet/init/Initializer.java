@@ -17,10 +17,10 @@ public class Initializer implements WebApplicationInitializer {
 		ctx.register(WebAppConfig.class);
 		
 		ctx.setServletContext(servletContext);		
-			
+		/*	
 		Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(ctx));
 		servlet.addMapping("/");
-		servlet.setLoadOnStartup(1);
+		servlet.setLoadOnStartup(1);*/
 		
 	}
 	
