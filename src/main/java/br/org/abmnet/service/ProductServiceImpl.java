@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Author: Mário Jorge Blog:
  */
 
-//@Component("proService")
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {

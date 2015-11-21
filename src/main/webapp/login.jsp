@@ -8,11 +8,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <sec:authorize access="isRememberMe()">
-    <c:redirect url="/pages/main.jsp"/>
+    <c:redirect url="/pages/crud.jsp"/>
 </sec:authorize>
 
 <sec:authorize access="isFullyAuthenticated()">
-    <c:redirect url="/pages/main.jsp"/>
+    <c:redirect url="/pages/crud.jsp"/>
 </sec:authorize>
 
 <html>

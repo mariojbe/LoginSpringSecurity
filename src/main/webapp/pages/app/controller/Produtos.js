@@ -53,7 +53,6 @@ Ext.define('ExtMVC.controller.Produtos', {
 
         win.close();
         this.getProdutosStore().sync();
-        //this.getContatosStore().load();
 
         if (novo) { //faz reload para atualziar
             this.getProdutosStore().load();
@@ -75,16 +74,20 @@ Ext.define('ExtMVC.controller.Produtos', {
             });
         } else {
             Ext.Msg.show({
-                title: 'Confirmação',
+                title: 'ConfirmaÃ§Ã£o',
                 msg: 'Tem certeza que deseja apagar o(s) registro(s) selecionado(s)?',
                 buttons: Ext.Msg.YESNO,
                 icon: Ext.MessageBox.WARNING,
                 scope: this,
                 width: 450,
                 fn: function (btn, ev) {
+                    var grid = this.getProdutoGrid(),
+                    record = grid.getSelectionModel().getSelection(),
+                    store = this.getProdutosStore();
+            
                     if (btn == 'yes') {
                         store.remove(record);
-                        store.sync();
+                        this.getProdutosStore().sync();
                         this.getProdutosStore().load();
                     }
                 }
